@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Resultado da Operação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        h1 {
+            color: #2f4f4f;
+            text-align: center;
+        }
+        .result-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fefefe;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .message {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        a.button-link {
+            display: inline-block;
+            padding: 8px 12px;
+            background: #2196F3;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        a.button-link:hover {
+            background: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Resultado</h1>
+
+<div class="result-container">
+    <div class="message" th:text="${message}">[Mensagem]</div>
+    <a class="button-link" th:href="@{/}">Voltar ao Formulário</a>
+</div>
+
+</body>
+</html>

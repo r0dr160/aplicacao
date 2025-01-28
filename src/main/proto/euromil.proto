@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+// Isto faz gerar cada message em arquivo separado (em vez de ficar tudo em EuromilOuterClass)
+option java_multiple_files = true;
+
+// Define o nome do pacote Java
+option java_package = "euromil";
+
+// Nome da classe “outer” (se quiser outro nome, mude aqui)
+option java_outer_classname = "EuroMilProto";
+
+// Nome do pacote protobuf
+package euromil;
+
+// Definição do serviço
+service Euromil {
+  rpc RegisterEuroMil (RegisterRequest) returns (RegisterReply);
+}
+
+// Mensagens
+message RegisterRequest {
+  string key = 1;
+  string checkid = 2;
+}
+
+message RegisterReply {
+  string message = 1;
+}
