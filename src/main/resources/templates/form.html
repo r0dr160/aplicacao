@@ -4,14 +4,17 @@
   <meta charset="UTF-8"/>
   <title>Fazer Aposta</title>
   <style>
+    /* Estilos para o corpo da página */
     body {
       font-family: Arial, sans-serif;
       margin: 30px;
     }
+    /* Estilos para o título */
     h1 {
       color: #2f4f4f;
       text-align: center;
     }
+    /* Estilos para o contêiner do formulário */
     .form-container {
       max-width: 400px;
       margin: 0 auto;
@@ -19,11 +22,13 @@
       padding: 20px;
       border-radius: 8px;
     }
+    /* Estilos para os rótulos dos campos */
     label {
       display: block;
       margin-top: 10px;
       font-weight: bold;
     }
+    /* Estilos para os campos de entrada de texto */
     input[type="text"] {
       width: 100%;
       padding: 6px;
@@ -31,6 +36,7 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+    /* Estilos para o botão de submissão */
     button {
       margin-top: 15px;
       background: #4CAF50;
@@ -40,9 +46,11 @@
       border-radius: 4px;
       cursor: pointer;
     }
+    /* Estilos para o botão ao passar o rato */
     button:hover {
       background: #45a049;
     }
+    /* Estilos para a nota de rodapé */
     .footer-note {
       text-align: center;
       margin-top: 20px;
@@ -56,6 +64,7 @@
 <h1>Sistema de Apostas EuroMil</h1>
 
 <div class="form-container">
+  <!-- Formulário para registo de aposta, integrado com Thymeleaf -->
   <form th:action="@{/registrarAposta}" th:object="${form}" method="post">
 
     <label for="creditAccount">Conta de Crédito (16 dígitos)</label>

@@ -1,28 +1,33 @@
 syntax = "proto3";
 
-// Isto faz gerar cada message em arquivo separado (em vez de ficar tudo em EuromilOuterClass)
+// Isto faz gerar cada message em ficheiro separado (em vez de ficar tudo em EuromilOuterClass)
 option java_multiple_files = true;
 
-// Define o nome do pacote Java
+// Define o nome do pacote Java para os ficheiros gerados
 option java_package = "euromil";
 
-// Nome da classe “outer” (se quiser outro nome, mude aqui)
+// Define o nome da classe “outer” para os ficheiros gerados
 option java_outer_classname = "EuroMilProto";
 
 // Nome do pacote protobuf
 package euromil;
 
-// Definição do serviço
+// Definição do serviço gRPC para o registo de apostas
 service Euromil {
+  // Método RPC para registar aposta, recebendo um RegisterRequest e retornando um RegisterReply
   rpc RegisterEuroMil (RegisterRequest) returns (RegisterReply);
 }
 
-// Mensagens
+// Mensagem que representa a requisição para registar aposta
 message RegisterRequest {
+  // Chave associada à aposta
   string key = 1;
+  // Identificador do cheque obtido do CrediBank
   string checkid = 2;
 }
 
+// Mensagem que representa a resposta do registo da aposta
 message RegisterReply {
+  // Mensagem de resposta após o registo da aposta
   string message = 1;
 }

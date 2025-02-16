@@ -3,7 +3,7 @@ plugins {
     id 'java'
     // Plugin para integração com o Spring Boot (versão 3.1.0)
     id 'org.springframework.boot' version '3.1.0'
-    // Gerência de dependências via Spring
+    // Plugin para gerenciamento de dependências via Spring
     id 'io.spring.dependency-management' version '1.1.0'
     // Plugin para geração de código a partir dos ficheiros Protobuf/gRPC
     id 'com.google.protobuf' version '0.9.3'
@@ -51,7 +51,7 @@ protobuf {
         }
     }
     generateProtoTasks {
-        // Configura os tasks para geração dos ficheiros a partir dos .proto
+        // Configura os tasks para gerar os ficheiros a partir dos .proto
         all().forEach { task ->
             task.plugins {
                 grpc {}
