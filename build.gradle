@@ -1,52 +1,57 @@
 plugins {
+    // Plugin para projetos Java
     id 'java'
+    // Plugin para integração com o Spring Boot (versão 3.1.0)
     id 'org.springframework.boot' version '3.1.0'
+    // Gerência de dependências via Spring
     id 'io.spring.dependency-management' version '1.1.0'
-
-    // Plugin para gerar código de protobuf/gRPC
+    // Plugin para geração de código a partir dos ficheiros Protobuf/gRPC
     id 'com.google.protobuf' version '0.9.3'
 }
 
 group = 'com.aplicacao'
 version = '0.0.1-SNAPSHOT'
 java {
+    // Define a compatibilidade com Java 17
     sourceCompatibility = '17'
 }
 
 repositories {
+    // Utiliza o repositório central do Maven para resolução das dependências
     mavenCentral()
 }
 
 dependencies {
-    // Spring Boot Web
+    // Dependências do Spring Boot para desenvolvimento web e Thymeleaf para renderização de templates HTML.
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    // Thymeleaf (para páginas HTML no mesmo projeto)
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
-    // gRPC e Protobuf
+    // Dependências para a implementação do gRPC e Protobuf.
     implementation 'io.grpc:grpc-netty-shaded:1.57.0'
     implementation 'io.grpc:grpc-protobuf:1.57.0'
     implementation 'io.grpc:grpc-stub:1.57.0'
     implementation 'com.google.protobuf:protobuf-java:3.24.3'
 
-    // Para usar a anotação @Generated
+    // Dependência para permitir o uso da anotação @Generated
     compileOnly 'javax.annotation:javax.annotation-api:1.3.2'
 
-    // Para testes do Spring Boot + JUnit
+    // Dependências para testes com Spring Boot e JUnit
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
 }
 
 protobuf {
     protoc {
+        // Artefacto do compilador protoc
         artifact = "com.google.protobuf:protoc:3.24.3"
     }
     plugins {
         grpc {
+            // Artefacto para gerar código gRPC em Java
             artifact = 'io.grpc:protoc-gen-grpc-java:1.57.0'
         }
     }
     generateProtoTasks {
+        // Configura os tasks para geração dos ficheiros a partir dos .proto
         all().forEach { task ->
             task.plugins {
                 grpc {}
@@ -55,8 +60,7 @@ protobuf {
     }
 }
 
-// Para permitir rodar via ./gradlew bootRun
+// Configuração para garantir que os ficheiros .proto são gerados antes de iniciar a aplicação
 tasks.named('bootRun') {
-    // garante que gera os .proto antes de subir
     dependsOn 'generateProto'
 }
